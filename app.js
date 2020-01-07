@@ -14,14 +14,15 @@ const express       = require("express"),
 //     {name: "salmon creek", image:"https://pixabay.com/get/57e2d1454853a514f6da8c7dda793f7f1636dfe2564c704c722778d0934fc55f_340.jpg"}
 // ]
 
-mongoose.connect("mongodb://localhost/camp", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/camp", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 //SCHEMA SETUP
 const campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 const Campground = mongoose.model("Campground", campgroundSchema);
@@ -39,6 +40,7 @@ app.get("/", function(req, res){
     res.render("landing")
 });
 
+//get all campgrounds
 app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
         if(err){
@@ -49,11 +51,13 @@ app.get("/campgrounds", function(req, res){
     })
 });
 
+// add new camp
 app.post("/campgrounds", function(req, res){
     // get data from form input
     var name = req.body.name;
     var image = req.body.image;
-    var newCamp = {name: name, image: image}
+    var description = req.body.description;
+    var newCamp = {name: name, image: image, description: description}
     //create new campground and save to db
     Campground.create(newCamp, function(err, newlyCreated){
         if(err){
@@ -65,9 +69,20 @@ app.post("/campgrounds", function(req, res){
     })
 });
 
+// get form for new camp
 app.get("/campgrounds/new", function(req, res){
-    res.render("campgrounds/new.ejs")
+    res.render("campgrounds/new")
 });
+
+// get single camp by camp id
+app.get("/campgrounds/:id", function(req, res){
+    //find campground with provided id
+    Campground.findById(req.params.id, function(err, foundCamp){
+        if (err) console.log(err);
+        //render show template with that camp
+        res.render("campgrounds/show", {campground: foundCamp})
+    })
+})
 
 app.listen(port, err => {
     if (err) console.log(err);
