@@ -16,15 +16,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+                        <a href="/campgrounds" class="nav-link">Home</a></li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     
-                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="#">Login</a></li>
-                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="#">Sign Up</a></li>
+                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+                            <a href="#" class="nav-link">Login</a></li>
+                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+                            <a href="#" class="nav-link">Sign Up</a></li>
                     
-                        <li class="nav-item"><a href="#">Signed In As USERNAME</a></li>
-                        <li class="nav-item"><a href="#">Logout</a></li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Signed In As USERNAME</a></li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Logout</a></li>
                     
                 </ul>
             </div>
