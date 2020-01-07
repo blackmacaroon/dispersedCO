@@ -22,6 +22,8 @@ app.set("view engine", "ejs");
 const campgroundSchema = new mongoose.Schema({
     name: String,
     image: String,
+    cost: Number,
+    location: String,
     description: String
 });
 
@@ -56,8 +58,10 @@ app.post("/campgrounds", function(req, res){
     // get data from form input
     var name = req.body.name;
     var image = req.body.image;
+    var cost = req.body.cost;
+    var location = req.body.location;
     var description = req.body.description;
-    var newCamp = {name: name, image: image, description: description}
+    var newCamp = {name: name, image: image, cost: cost, location: location, description: description}
     //create new campground and save to db
     Campground.create(newCamp, function(err, newlyCreated){
         if(err){
