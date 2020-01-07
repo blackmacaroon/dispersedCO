@@ -9,12 +9,24 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button></button>
-                    <a class="navbar-brand" href="/">DispersedCampCO</a>
-                </div>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <a class="navbar-brand" href="/">DispersedCampCO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <% if(!currentUser){ &>
+                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="#">Login</a></li>
+                        <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="#">Sign Up</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a href="#">Signed In As <%= currentUser.username %></a></li>
+                        <li class="nav-item"><a href="#">Logout</a></li>
+                    <% } %>
+                </ul>
             </div>
         </nav>
 
