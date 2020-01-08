@@ -5,13 +5,15 @@
     </div>
     <div class="col-md-9">
         <div class="card mb-3">
-            <img src="<%= campground.image %>">
-            <p><%= campground.description%></p>
-            <% campground.comments.forEach(function(comment){ %>
-                <p>
-                    <strong><%= comment.author %></strong> - <%= comment.text %>
+            <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name%>">
+            <div class="card-body">
+                <p class="float-right">
+                    $<%= campground.cost %>/night
                 </p>
-            <% }) %>
+                <h5 class="card-title"><%= campground.name %></h5>
+                <hr>
+                <p class="card-text"><%= campground.description%></p>
+            </div>
         </div>
         <div class="card">
             <div class="card-body">
@@ -19,6 +21,18 @@
                     <a class="btn btn-success" href="<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
                 <hr>
+                <div class="row">
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="col-md-12 mb-2">
+                            <div class="card">
+                                <div class="float-left">
+                                    <p class="card-title"><%= comment.author %></p>
+                                    <p class="card-text"><%= comment.text %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
             </div>
         </div>
     </div>

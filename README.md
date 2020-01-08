@@ -47,3 +47,7 @@ Each campground has:
 #Comment New/Create
     * Add comment new and create routes
     * Add new comment form
+
+#Style Camp Page
+    * Add sidebar
+    * Display comments nicely
