@@ -39,3 +39,7 @@ Each campground has:
 #Add Seeds File
     * Add seeds.js
     * Run seeds.js every time the server starts
+
+#Add Comment Model
+    * Error party
+    * Display comments on campgroundById page

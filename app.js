@@ -3,7 +3,7 @@ const express       = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     Campground      = require("./models/campground"),
-    // Comment         = require("./models/comment"),
+    Comment         = require("./models/comment"),
     // User            = require("./models/user"),
     SeedDB          =require("./seeds")
     port            = 5555;
@@ -69,9 +69,10 @@ app.get("/campgrounds/new", function(req, res){
 // get single camp by camp id
 app.get("/campgrounds/:id", function(req, res){
     //find campground with provided id
-    Campground.findById(req.params.id, function(err, foundCamp){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCamp){
         if (err) console.log(err);
         //render show template with that camp
+        console.log(foundCamp)
         res.render("campgrounds/show", {campground: foundCamp})
     })
 })
