@@ -43,3 +43,7 @@ Each campground has:
 #Add Comment Model
     * Error party
     * Display comments on campgroundById page
+
+#Comment New/Create
+    * Add comment new and create routes
+    * Add new comment form

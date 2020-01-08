@@ -17,15 +17,6 @@ app.set("view engine", "ejs");
 
 
 
-// Campground.create({name: "badger hollow", image:"https://pixabay.com/get/57e0d2414250a414f6da8c7dda793f7f1636dfe2564c704c72277fd69f4cc459_340.jpg"}, function(err, campground){
-//     if(err){
-//         console.log(err)
-//     } else {
-//         console.log("camp created!")
-//         console.log(campground)
-//     }
-// })
-
 app.get("/", function(req, res){
     res.render("landing")
 });
@@ -68,14 +59,43 @@ app.get("/campgrounds/new", function(req, res){
 
 // get single camp by camp id
 app.get("/campgrounds/:id", function(req, res){
-    //find campground with provided id
+    //find campground with provided id, populating the comments on the campground, execute query
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCamp){
-        if (err) console.log(err);
-        //render show template with that camp
-        console.log(foundCamp)
-        res.render("campgrounds/show", {campground: foundCamp})
+        if (err) {
+            console.log(err);
+        } else {
+            //render show template with that camp
+            res.render("campgrounds/show", {campground: foundCamp})
+        }
     })
 })
+
+// get comments
+app.get("/campgrounds/:id/comments/new", function(req, res){
+    Campground.findById(req.params.id, function(err, campground){
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("comments/new", {campground: campground})
+        }
+    })
+})
+app.post("/campgrounds/:id/comments/", function(req, res){
+    //look up camp with id
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err)
+            res.redirect("/campgrounds")
+        } else {
+            Comment.create({})
+        }
+    })
+    // creaete new comment
+    // commect new comment to campground
+    //redirect campground show page
+})
+
+
 
 app.listen(port, err => {
     if (err) console.log(err);
