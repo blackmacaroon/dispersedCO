@@ -33,3 +33,9 @@ Each campground has:
     * Add a show route/template
 
 #Refactor Mongoose
+    * Create models directory
+    * Require all the things
+
+#Add Seeds File
+    * Add seeds.js
+    * Run seeds.js every time the server starts

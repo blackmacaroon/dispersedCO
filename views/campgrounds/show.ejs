@@ -1,5 +1,27 @@
 <%- include("../partials/header") %>
-<h1> <%= campground.name%> </h1>
-<img src="<%= campground.image %>">
-<p><%= campground.description %></p>
+<div class="row">
+    <div class="col-md-3">
+        <div id="map"></div>
+    </div>
+    <div class="col-md-9">
+        <div class="card mb-3">
+            
+            <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
+            <div class="card-body">
+                <p class="float-right"><%= campground.cost %></p>
+                <h5 class="card-title"><%= campground.name%></h5>
+                <hr>
+                <p class="card-text"><%= campground.description %></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <a class="btn btn-success" href="#">Add New Comment</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
 <%- include("../partials/footer") %>
