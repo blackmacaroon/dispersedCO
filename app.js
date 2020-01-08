@@ -60,12 +60,12 @@ app.get("/campgrounds/new", function(req, res){
 // get single camp by camp id
 app.get("/campgrounds/:id", function(req, res){
     //find campground with provided id, populating the comments on the campground, execute query
-    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCamp){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, campground){
         if (err) {
             console.log(err);
         } else {
             //render show template with that camp
-            res.render("campgrounds/show", {campground: foundCamp})
+            res.render("campgrounds/show", {campground: campground})
         }
     })
 })

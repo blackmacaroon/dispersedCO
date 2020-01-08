@@ -5,12 +5,18 @@
     </div>
     <div class="col-md-9">
         <div class="card mb-3">
-            
+            <img src="<%= campground.image %>">
+            <p><%= campground.description%></p>
+            <% campground.comments.forEach(function(comment){ %>
+                <p>
+                    <strong><%= comment.author %></strong> - <%= comment.text %>
+                </p>
+            <% }) %>
         </div>
         <div class="card">
             <div class="card-body">
                 <div class="text-right">
-                    <a class="btn btn-success" href="#">Add New Comment</a>
+                    <a class="btn btn-success" href="<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
                 <hr>
             </div>
