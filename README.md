@@ -51,3 +51,5 @@ Each campground has:
 #Style Camp Page
     * Add sidebar
     * Display comments nicely
+    * Add public directory
+    * Add custom stylesheet
