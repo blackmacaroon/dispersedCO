@@ -138,6 +138,7 @@ app.post("/register", function(req, res){
 })
 
 // LOGIN ROUTES
+
 app.get("/login", function(req, res){
     res.render("login", {page: 'login'})
 })
