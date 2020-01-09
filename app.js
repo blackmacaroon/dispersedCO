@@ -150,6 +150,13 @@ app.post("/login", passport.authenticate("local",
     }), function(req, res){
 })
 
+// LOGOUT ROUTE
+
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/campgrounds")
+})
+
 app.listen(port, err => {
     if (err) console.log(err);
     console.log("camp server has started, hold on to your butts")
