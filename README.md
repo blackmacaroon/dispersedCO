@@ -53,3 +53,12 @@ Each campground has:
     * Display comments nicely
     * Add public directory
     * Add custom stylesheet
+
+#Auth Pt. 1 - Add User Model
+    * Install all packages needed for auth
+    * Define user model
+
+#Auth Pt. 2 - Register
+    * Configure passport
+    * Add register routes
+    * Add register template
