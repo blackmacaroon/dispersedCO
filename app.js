@@ -7,7 +7,9 @@ const express       = require("express"),
     Campground      = require("./models/campground"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
-    SeedDB          = require("./seeds")
+    session         = require("express-session"),
+    flash           = require("connect-flash"),
+    SeedDB          = require("./seeds"),
     port            = 5555;
 
 
