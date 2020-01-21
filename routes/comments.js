@@ -5,6 +5,7 @@ const Comment = require("../models/comment")
 const middleware = require("../middleware")
 const { isLoggedIn, checkUserComment, isAdmin } = middleware
 
+// comments new
 router.get("/new", isLoggedIn, function(req, res){
     console.log(req.params.id)
     Campground.findById(req.params.id, function(err, campground){
@@ -16,6 +17,7 @@ router.get("/new", isLoggedIn, function(req, res){
     })
 });
 
+// comments create
 router.post("/", isLoggedIn, function(req, res){
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -38,3 +40,6 @@ router.post("/", isLoggedIn, function(req, res){
         }
     })
 });
+
+//edit
+//delete
