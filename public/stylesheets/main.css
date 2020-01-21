@@ -30,8 +30,8 @@ body {
 }
 .card image {
     width: 100%;
-    
 }
+
 
 .footer {
     position: absolute;
@@ -40,4 +40,8 @@ body {
     height: 60px;
     background-color: #f5f5f5;
     
+}
+
+.delete-form {
+    display: inline-block;
 }
