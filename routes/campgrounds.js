@@ -61,3 +61,5 @@ router.get("/:id", function(req, res){
 
 //edit
 //delete
+
+module.exports = router

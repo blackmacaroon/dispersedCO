@@ -43,3 +43,5 @@ router.post("/", isLoggedIn, function(req, res){
 
 //edit
 //delete
+
+module.exports = router
