@@ -23,15 +23,15 @@ router.get("/", function(req, res){
 });
 
 // add new campground to database
-router.post("/", isLoggedIn, isSafe, function(req, res){
-    let name = req.body.name
-    let image = req.body.image
-    let desc = req.body.desc
-    let author = {
-        id: req.user._id,
-        username: req.user.username
-    }
-    let cost = req.body.cost
+router.post("/", function(req, res){
+    // let name = req.body.name
+    // let image = req.body.image
+    // let desc = req.body.desc
+    // let author = {
+    //     id: req.user._id,
+    //     username: req.user.username
+    // }
+    // let cost = req.body.cost
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err)
@@ -41,6 +41,25 @@ router.post("/", isLoggedIn, isSafe, function(req, res){
         }
     })
 });
+
+// app.post("/campgrounds", function(req, res){
+//     // get data from form input
+//     var name = req.body.name;
+//     var image = req.body.image;
+//     var cost = req.body.cost;
+//     var location = req.body.location;
+//     var description = req.body.description;
+//     var newCamp = {name: name, image: image, cost: cost, location: location, description: description}
+//     //create new campground and save to db
+//     Campground.create(newCamp, function(err, newlyCreated){
+//         if(err){
+//             console.log(err)
+//         } else {
+//             // redirect to campgrounds page
+//             res.redirect("/campgrounds");
+//         }
+//     })
+// });
 
 // show form to create new campground
 router.get("/new", isLoggedIn, function(req, res){
