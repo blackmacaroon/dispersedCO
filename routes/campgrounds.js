@@ -9,6 +9,7 @@ const { isLoggedIn, checkUserCampground, checkUserComment, isAdmin, isSafe } = m
 
 // show all campgrounds
 router.get("/", function(req, res){
+    
     Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log(err)
@@ -16,7 +17,7 @@ router.get("/", function(req, res){
             if(req.xhr){
                 res.json(allCampgrounds)
             } else {
-                res.render("campgrounds/index", {campgrounds: allCampgrounds, page: 'campgrounds'})
+                res.render("campgrounds/index", {campgrounds: allCampgrounds, currentUser: req.user, page: 'campgrounds'})
             }
         }
     })
