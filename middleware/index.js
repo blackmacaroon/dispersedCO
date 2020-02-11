@@ -5,7 +5,7 @@ module.exports = {
         if(req.isAuthenticated()){
             return next()
         }
-        req.redirect('/login')
+        res.redirect('/login')
     },
     checkUserCamp: function(req, res, next){
         Campground.findById(req.params.id, function(err, foundCampground){
@@ -16,7 +16,7 @@ module.exports = {
                 req.campground = foundCampground
                 next();
             } else {
-                req.redirect('/campgrounds/' + req.params.id)
+                res.redirect('/campgrounds/' + req.params.id)
             }
         })
     },
