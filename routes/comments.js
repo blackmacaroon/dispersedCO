@@ -1,5 +1,5 @@
 const express = require("express")
-const router = express.Router({mergeParams: true})
+const router = express.Router({mergeParams: true}) // otherwise can't find campground ids
 const Campground = require("../models/campground")
 const Comment = require("../models/comment")
 const middleware = require("../middleware")
@@ -29,11 +29,10 @@ router.post("/", isLoggedIn, function(req, res){
                     console.log(err)
                 } else {
                     comment.author.id = req.user._id
-                    comment.author.username = req.username
+                    comment.author.username = req.user.username
                     comment.save()
                     campground.comments.push(comment)
                     campground.save()
-                    console.log(comment)
                     res.redirect('/campgrounds/' + campground._id)
                 }
             })

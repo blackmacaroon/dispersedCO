@@ -24,15 +24,16 @@ router.get("/", function(req, res){
 });
 
 // add new campground to database
-router.post("/", function(req, res){
-    // let name = req.body.name
-    // let image = req.body.image
-    // let desc = req.body.desc
-    // let author = {
-    //     id: req.user._id,
-    //     username: req.user.username
-    // }
-    // let cost = req.body.cost
+router.post("/", isLoggedIn, function(req, res){
+    let name = req.body.name
+    let image = req.body.image
+    let desc = req.body.desc
+    let author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    let cost = req.body.cost
+    let newCampground = {name:name, image:image, desc:desc, author:author}
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err)
