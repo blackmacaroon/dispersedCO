@@ -13,6 +13,11 @@
                 <h5 class="card-title"><%= campground.name %></h5>
                 <hr>
                 <p class="card-text"><%= campground.description%></p>
+                <a class="btn btn-danger" href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
+                <form action="/campgrounds/" method="POST">
+                    <a class="btn btn-danger" href="/campgrounds/<%=campground._id%>?_method=DELETE">Delete Campground</a>
+                </form>
+
             </div>
         </div>
         <div class="card">
@@ -29,6 +34,7 @@
                                     <p class="card-title"><%= comment.author.username %></p>
                                     <p class="card-text"><%= comment.text %></p>
                                 </div>
+                                
                             </div>
                         </div>
                     <% }) %>

@@ -27,13 +27,14 @@ router.get("/", function(req, res){
 router.post("/", isLoggedIn, function(req, res){
     let name = req.body.name
     let image = req.body.image
+    let location = req.body.location
     let desc = req.body.desc
     let author = {
         id: req.user._id,
         username: req.user.username
     }
     let cost = req.body.cost
-    let newCampground = {name:name, image:image, desc:desc, author:author}
+    let newCampground = {name:name, image:image, cost:cost, location:location, desc:desc, author:author}
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err)
@@ -43,25 +44,6 @@ router.post("/", isLoggedIn, function(req, res){
         }
     })
 });
-
-// app.post("/campgrounds", function(req, res){
-//     // get data from form input
-//     var name = req.body.name;
-//     var image = req.body.image;
-//     var cost = req.body.cost;
-//     var location = req.body.location;
-//     var description = req.body.description;
-//     var newCamp = {name: name, image: image, cost: cost, location: location, description: description}
-//     //create new campground and save to db
-//     Campground.create(newCamp, function(err, newlyCreated){
-//         if(err){
-//             console.log(err)
-//         } else {
-//             // redirect to campgrounds page
-//             res.redirect("/campgrounds");
-//         }
-//     })
-// });
 
 // show form to create new campground
 router.get("/new", isLoggedIn, function(req, res){
@@ -80,7 +62,35 @@ router.get("/:id", function(req, res){
     })
 });
 
-//edit
-//delete
+//edit campground form
+router.get("/:id/edit", function(req, res){
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            res.redirect("/campgrounds")
+        } else {
+            res.render("campgrounds/edit", {campground: foundCampground})
+        }
+    })
+    
+})
+//handle campground update
+router.put("/:id", function(req, res){
+    Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+        if(err){
+            res.redirect("/campgrounds")
+        } else {
+            res.redirect("/campgrounds/" + req.params.id)
+        }
+    })
+})
+//destroy
+router.delete("/:id", function(req, res){
+    Campground.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/campgrounds")
+        }
+        res.redirect("/campgrounds")
+    })
+})
 
 module.exports = router
