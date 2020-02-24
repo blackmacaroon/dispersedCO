@@ -3,7 +3,7 @@ const router = express.Router()
 const Campground = require("../models/campground")
 const Comment = require("../models/comment")
 const middleware = require("../middleware")
-const { isLoggedIn, checkUserCampground, checkUserComment, isAdmin, isSafe } = middleware
+const { isLoggedIn, checkUserCamp, checkUserComment, isAdmin, isSafe } = middleware
 
 // define escpe regex function for search feature
 
@@ -63,15 +63,8 @@ router.get("/:id", function(req, res){
 });
 
 //edit campground form
-router.get("/:id/edit", function(req, res){
-    Campground.findById(req.params.id, function(err, foundCampground){
-        if(err){
-            res.redirect("/campgrounds")
-        } else {
-            res.render("campgrounds/edit", {campground: foundCampground})
-        }
-    })
-    
+router.get("/:id/edit", isLoggedIn, checkUserCamp, function(req, res){
+            res.render("campgrounds/edit", {campground: req.campground})
 })
 //handle campground update
 router.put("/:id", function(req, res){
