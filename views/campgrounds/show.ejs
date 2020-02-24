@@ -14,7 +14,7 @@
                 <hr>
                 <p class="card-text"><%= campground.description%></p>
                <div class="camp-actions">
-                    <a class="btn btn-danger camp-action-item" href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
+                    <a class="btn btn-dark camp-action-item" href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
                     <form action="/campgrounds/" method="POST">
                         <a class="btn btn-danger camp-action-item" href="/campgrounds/<%=campground._id%>?_method=DELETE">Delete Campground</a>
                     </form>
