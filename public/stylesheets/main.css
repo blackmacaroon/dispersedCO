@@ -33,6 +33,7 @@ body {
 }
 
 .card {
+  border: none;
   color: #292b2c;
   padding: 0;
   background-color: #f2f2f2;
