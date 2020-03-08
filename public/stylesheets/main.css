@@ -8,10 +8,11 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color: #383838;
+  background-color: #292b2c;
 }
 
 .form-signin {
+  color: #292b2c;
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -19,6 +20,7 @@ body {
 }
 
 .form-signin .form-control {
+  color: #292b2c;
   position: relative;
   box-sizing: border-box;
   height: auto;
@@ -31,7 +33,7 @@ body {
 }
 
 .card {
-  color: black;
+  color: #292b2c;
   padding: 0;
   background-color: #f2f2f2;
 }
