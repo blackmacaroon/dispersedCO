@@ -62,10 +62,16 @@ router.get("/:id", function(req, res){
     })
 });
 
-//edit campground form
+//edit - campground form
 router.get("/:id/edit", isLoggedIn, checkUserCamp, function(req, res){
-            res.render("campgrounds/edit", {campground: req.campground})
-})
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err) {
+            res.redirect("/campgrounds")
+        } else {
+        res.render("campgrounds/edit", {campground: foundCampground})
+        }
+    })
+});
 //handle campground update
 router.put("/:id", function(req, res){
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
@@ -75,15 +81,15 @@ router.put("/:id", function(req, res){
             res.redirect("/campgrounds/" + req.params.id)
         }
     })
-})
+});
 //destroy
 router.delete("/:id", function(req, res){
-    Campground.findByIdAndRemove(req.params.id, function(err){
-        if(err){
-            res.redirect("/campgrounds")
-        }
+    Campground.findById(req.params.id, function(err, campground){
+        if(err) return next(err);
+
+        campground.remove()
         res.redirect("/campgrounds")
     })
-})
+});
 
 module.exports = router
