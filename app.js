@@ -23,7 +23,7 @@ const commentRoutes      = require("./routes/comments"),
       indexRoutes        = require("./routes/index")
 
 
-mongoose.connect("mongodb://localhost:27017/camp", { useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:27017/camp", { useNewUrlParser: true , useUnifiedTopology: true })
     .then(() => console.log(`Database connected`))
     .catch(err => console.log(`Database connection error: ${err.message}`))
 app.use(bodyParser.urlencoded({extended: true}))
