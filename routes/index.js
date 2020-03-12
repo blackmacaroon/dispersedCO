@@ -16,16 +16,13 @@ router.get("/register", function(req, res){
 // handle register logic
 router.post("/register", function(req, res){
     const newUser = new User({username: req.body.username})
-    if(req.body.adminCode === process.env.ADMIN_CODE){
-        newUser.isAdmin = true
-    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err)
-            return res.render("register", {error: err.message})
+            return res.render("register")
         }
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/campground")
+            res.redirect("/campgrounds")
         })
     })
 })
