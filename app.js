@@ -11,7 +11,7 @@ const express       = require("express"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
     SeedDB          = require("./seeds"),
-    port            = 5555;
+    port            = 5555
 
 // config dotenv
 // require('dotenv').load()
@@ -25,22 +25,22 @@ const commentRoutes      = require("./routes/comments"),
 mongoose.connect("mongodb://localhost:27017/camp", { useNewUrlParser: true })
     .then(() => console.log(`Database connected`))
     .catch(err => console.log(`Database connection error: ${err.message}`))
-app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method"));
-app.use(flash());
+app.use(bodyParser.urlencoded({extended: true}))
+app.set("view engine", "ejs")
+app.use(express.static(__dirname + "/public"))
+app.use(methodOverride("_method"))
+app.use(flash())
 // passport config
 app.use(require("express-session")({
     secret: "wasn't me",
     resave: false,
     saveUninitialized: false
 }))
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 //require moment
 app.locals.moment = require('moment')
@@ -59,4 +59,4 @@ app.use("/campgrounds/:id/comments", commentRoutes)
 app.listen(port, err => {
     if (err) console.log(err);
     console.log("server's running, hold on to your butts")
-});
+})
