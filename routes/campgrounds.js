@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Campground = require("../models/campground")
-const Comment = require("../models/comment")
+// const Comment = require("../models/comment")
 const middleware = require("../middleware")
 const { isLoggedIn, checkUserCamp, checkUserComment, isAdmin, isSafe } = middleware
 
@@ -76,8 +76,10 @@ router.get("/:id/edit", isLoggedIn, checkUserCamp, function(req, res){
 router.put("/:id", function(req, res){
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         if(err){
-            res.redirect("/campgrounds")
+            req.flash("error", err)
+            res.redirect("back")
         } else {
+            req.flash("success", "Successfully updated camp site data")
             res.redirect("/campgrounds/" + req.params.id)
         }
     })
