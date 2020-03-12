@@ -37,7 +37,8 @@ module.exports = {
                 }
             })
         } else {
-
+            req.flash("error", "You need to be signed in to do that")
+            res.redirect("/login")
         }
     },
     // isAdmin: function(req, res, next){
