@@ -63,7 +63,7 @@ router.get("/:id", function(req, res){
 });
 
 //edit - campground form
-router.get("/:id/edit", isLoggedIn, checkUserCamp, function(req, res){
+router.get("/:id/edit", checkUserCamp, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
         if(err) {
             res.redirect("/campgrounds")
@@ -73,7 +73,7 @@ router.get("/:id/edit", isLoggedIn, checkUserCamp, function(req, res){
     })
 });
 //handle campground update
-router.put("/:id", function(req, res){
+router.put("/:id", checkUserCamp, function(req, res){
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         if(err){
             req.flash("error", err)
@@ -85,7 +85,7 @@ router.put("/:id", function(req, res){
     })
 });
 //destroy
-router.delete("/:id", function(req, res){
+router.delete("/:id", checkUserCamp, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
         if(err) {
             res.redirect("/campgrounds")
