@@ -15,7 +15,7 @@ router.get("/new", isLoggedIn, function(req, res){
             res.render("comments/new", {campground: campground})
         }
     })
-});
+})
 
 // comments create
 router.post("/", isLoggedIn, function(req, res){
@@ -38,9 +38,29 @@ router.post("/", isLoggedIn, function(req, res){
             })
         }
     })
-});
+})
 
-//edit
+//comment edit route
+router.get("/:comment_id/edit", function(req, res){
+    Comment.findById(req.params.comment_id, function(err, foundComment){
+        if(err){
+            res.redirect("back")
+        } else {
+            res.redirect("comments/edit", {campground_id: req.params.id, comment: foundComment})
+        }
+    })
+})
+
+//comment update
+router.get("/:comment_id", function(req, res){
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment){
+        if(err){
+            res.redirect("back")
+        } else {
+            res.redirect("/campgrounds/" + req.params.id)
+        }
+    })
+})
 //delete
 
 module.exports = router
