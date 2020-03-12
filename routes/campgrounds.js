@@ -3,7 +3,7 @@ const router = express.Router()
 const Campground = require("../models/campground")
 // const Comment = require("../models/comment")
 const middleware = require("../middleware")
-const { isLoggedIn, checkUserCamp, checkUserComment, isAdmin, isSafe } = middleware
+const { isLoggedIn, checkUserCamp, checkUserComment } = middleware
 
 // define escpe regex function for search feature
 
