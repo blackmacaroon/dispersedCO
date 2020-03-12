@@ -86,7 +86,7 @@ router.put("/:id", function(req, res){
 });
 //destroy
 router.delete("/:id", function(req, res){
-    Campground.findByIdAndRemove(req.params.id, function(err, campground){
+    Campground.findByIdAndRemove(req.params.id, function(err){
         if(err) {
             res.redirect("/campgrounds")
         } else {
