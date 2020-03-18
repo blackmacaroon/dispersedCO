@@ -8,28 +8,40 @@ const mongoose = require("mongoose"),
             image:"https://source.unsplash.com/700x390/?forest,pond,lake", 
             cost: 0.00, 
             location: "right here", 
-            description: "lots of sun, no privacy"
+            description: "lots of sun, no privacy",
+            author: {
+                id: 123
+            }
         },
         {
             name: "badger hollow", 
             image:"https://source.unsplash.com/700x390/?trees,thicket,field", 
             cost: 0.00, 
             location: "over there", 
-            description: "lots of privacy, no sun"
+            description: "lots of privacy, no sun",
+            author: {
+                id: 456
+            }
         },
         {
             name: "menagerie coast", 
             image:"https://source.unsplash.com/700x390/?trees,coast,ocean", 
             cost: 0.00, 
             location: "north of fort collins", 
-            description: "noisy and crowded"
+            description: "noisy and crowded",
+            author: {
+                id: 789
+            }
         },
         {
             name: "slayers take", 
             image:"https://source.unsplash.com/700x390/?woods,camping,mountain", 
             cost: 0.00, 
             location: "down", 
-            description: "damp and misty, very private"
+            description: "damp and misty, very private",
+            author: {
+                id: 012
+            }
         },
         {
 
@@ -37,21 +49,31 @@ const mongoose = require("mongoose"),
             image:"https://source.unsplash.com/700x390/?mountain,woods,forest", 
             cost: 0.00, 
             location: "170 past idaho springs", 
-            description: "beautiful and remote, lots of critters"
+            description: "beautiful and remote, lots of critters",
+            author: {
+                id: 345
+            }
         },
         {
             name: "bill's canyon", 
             image:"https://source.unsplash.com/700x390/?canyon,desert", 
             cost: 0.00, 
             location: "up", 
-            description: "very icy in the spring, bring lots of blankets"
+            description: "very icy in the spring, bring lots of blankets",
+            author: {
+                id: 678
+            }
         },
         {
             name: "salmon creek", 
             image:"https://source.unsplash.com/700x390/?stream,creek,brook", 
             cost: 0.00, 
             location: "second star to the left", 
-            description: "beautiful but beware bears"}
+            description: "beautiful but beware bears",
+            author: {
+                id: 901
+            }
+        }
     ]
 
 function seedDB(){
