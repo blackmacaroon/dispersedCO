@@ -56,6 +56,14 @@ body {
   justify-content: flex-end;
 }
 
+.comment-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-text span {
+  font-weight: bold;
+}
 .comment-actions {
   display: flex;
   justify-content: flex-end;

@@ -31,7 +31,7 @@ app.set("view engine", "ejs")
 app.use(express.static(__dirname + "/public"))
 app.use(methodOverride("_method"))
 app.use(flash())
-SeedDB(); //seed the database
+// SeedDB(); //seed the database - deletes all camps and fills in with seed data - errors because no author id
 
 // passport config
 app.use(require("express-session")({
