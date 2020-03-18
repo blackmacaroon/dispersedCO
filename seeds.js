@@ -10,7 +10,7 @@ const mongoose = require("mongoose"),
             location: "right here", 
             description: "lots of sun, no privacy",
             author: {
-                id: 123
+                username: "SallyRideOrDie"
             }
         },
         {
@@ -20,7 +20,7 @@ const mongoose = require("mongoose"),
             location: "over there", 
             description: "lots of privacy, no sun",
             author: {
-                id: 456
+                username: "Warren2020"
             }
         },
         {
@@ -29,9 +29,7 @@ const mongoose = require("mongoose"),
             cost: 0.00, 
             location: "north of fort collins", 
             description: "noisy and crowded",
-            author: {
-                id: 789
-            }
+            
         },
         {
             name: "slayers take", 
@@ -39,9 +37,7 @@ const mongoose = require("mongoose"),
             cost: 0.00, 
             location: "down", 
             description: "damp and misty, very private",
-            author: {
-                id: 012
-            }
+            
         },
         {
 
@@ -50,9 +46,7 @@ const mongoose = require("mongoose"),
             cost: 0.00, 
             location: "170 past idaho springs", 
             description: "beautiful and remote, lots of critters",
-            author: {
-                id: 345
-            }
+            
         },
         {
             name: "bill's canyon", 
@@ -60,9 +54,7 @@ const mongoose = require("mongoose"),
             cost: 0.00, 
             location: "up", 
             description: "very icy in the spring, bring lots of blankets",
-            author: {
-                id: 678
-            }
+            
         },
         {
             name: "salmon creek", 
@@ -70,9 +62,7 @@ const mongoose = require("mongoose"),
             cost: 0.00, 
             location: "second star to the left", 
             description: "beautiful but beware bears",
-            author: {
-                id: 901
-            }
+            
         }
     ]
 
