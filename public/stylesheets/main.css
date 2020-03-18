@@ -56,6 +56,11 @@ body {
   justify-content: flex-end;
 }
 
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .camp-action-item {
   margin: 0 0 0 10px;
 }
