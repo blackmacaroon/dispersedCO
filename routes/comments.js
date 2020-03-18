@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true}) // otherwise can't find campg
 const Campground = require("../models/campground")
 const Comment = require("../models/comment")
 const middleware = require("../middleware")
-const { isLoggedIn, checkUserComment, isAdmin } = middleware
+const { isLoggedIn, checkUserComment } = middleware
 
 // comments new
 router.get("/new", isLoggedIn, function(req, res){
