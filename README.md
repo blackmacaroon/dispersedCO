@@ -99,7 +99,17 @@ Each campground has:
     * Add edit button
     * Add update route
 
+## Deleting Comments
+    * Add destroy route
+    * Add delete button
+
 ## Authorization pt 1
-    * user can only edit their own camps
-    * user can only delete their own camps
+    * User can only edit their own camps
+    * User can only delete their own camps
     * Hide/show edit/delete buttons when appropriate
+
+## Authorization pt 2
+    * User can only edit their own comments
+    * User can only delete their own comments
+    * Hide/show buttons as appropriate
+    * Refactor middleware
