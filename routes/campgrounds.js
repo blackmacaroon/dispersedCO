@@ -12,7 +12,7 @@ router.get("/", function(req, res){
     
     Campground.find({}, function(err, allCampgrounds){
         if(err){
-            console.log(err)
+            req.flash("error", "No camps to find")
         } else {
             if(req.xhr){
                 res.json(allCampgrounds)
@@ -37,9 +37,9 @@ router.post("/", isLoggedIn, function(req, res){
     let newCampground = {name:name, image:image, cost:cost, location:location, desc:desc, author:author}
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
-            console.log(err)
+            req.flash("error", "Could not create camp")
         } else {
-            console.log(newlyCreated)
+            req.flash("success", "Camp created")
             res.redirect("/campgrounds")
         }
     })
@@ -66,6 +66,7 @@ router.get("/:id", function(req, res){
 router.get("/:id/edit", checkUserCamp, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
         if(err) {
+            req.flash("error", "Oops, nope.")
             res.redirect("/campgrounds")
         } else {
         res.render("campgrounds/edit", {campground: foundCampground})
@@ -90,6 +91,7 @@ router.delete("/:id", checkUserCamp, function(req, res){
         if(err) {
             res.redirect("/campgrounds")
         } else {
+            req.flash("success", "Camp deleted")
             res.redirect("/campgrounds")
         }
     })

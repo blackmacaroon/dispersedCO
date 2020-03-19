@@ -33,6 +33,7 @@ router.post("/", isLoggedIn, function(req, res){
                     comment.save()
                     campground.comments.push(comment)
                     campground.save()
+                    req.flash("success", "Comment created")
                     res.redirect('/campgrounds/' + campground._id)
                 }
             })
@@ -67,6 +68,7 @@ router.delete("/:comment_id", checkUserComment, function(req, res){
         if(err){
             res.redirect("back")
         } else {
+            req.flash("success", "Comment deleted")
             res.redirect("/campgrounds/" + req.params.id)
         }
     })
