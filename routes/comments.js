@@ -10,7 +10,7 @@ router.get("/new", isLoggedIn, function(req, res){
     console.log(req.params.id)
     Campground.findById(req.params.id, function(err, campground){
         if(err){
-            console.log(err)
+            req.flash("error", "Camp data not found")
         } else {
             res.render("comments/new", {campground: campground})
         }
@@ -21,12 +21,12 @@ router.get("/new", isLoggedIn, function(req, res){
 router.post("/", isLoggedIn, function(req, res){
     Campground.findById(req.params.id, function(err, campground){
         if(err){
-             console.log(err)
+             req.flash("error", "Camp data not found")
              res.redirect("/campgrounds")
         } else {
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
-                    console.log(err)
+                    req.flash("error", "Could not post comment to camp data")
                 } else {
                     comment.author.id = req.user._id
                     comment.author.username = req.user.username
