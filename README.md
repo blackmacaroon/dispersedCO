@@ -117,3 +117,12 @@ Each campground has:
 ## Adding Flash message handler
     * Install and configure connect-flash
     * Add bootstrap alerts to header
+
+
+
+
+
+## Future Features
+    * Magnifying glass instead of "Search" text on search button
+    * Dynamic star ratings or thumbs up/down
+    * Date submitted or date camped
