@@ -18,10 +18,11 @@ router.post("/register", function(req, res){
     const newUser = new User({username: req.body.username})
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-            req.flash("error", "Nope, not right now.")
+            req.flash("error", err)
             return res.render("register")
         }
         passport.authenticate("local")(req, res, function(){
+            req.flash("success", "Welcome to dispersedCO" + user.username)
             res.redirect("/campgrounds")
         })
     })

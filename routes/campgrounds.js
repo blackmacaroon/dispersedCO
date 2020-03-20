@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 const Campground = require("../models/campground")
-// const Comment = require("../models/comment")
 const middleware = require("../middleware")
 const { isLoggedIn, checkUserCamp } = middleware
 
@@ -28,13 +27,13 @@ router.post("/", isLoggedIn, function(req, res){
     let name = req.body.name
     let image = req.body.image
     let location = req.body.location
-    let desc = req.body.desc
+    let description = req.body.description
     let author = {
         id: req.user._id,
         username: req.user.username
     }
     let cost = req.body.cost
-    let newCampground = {name:name, image:image, cost:cost, location:location, desc:desc, author:author}
+    let newCampground = {name:name, image:image, cost:cost, location:location, description:description, author:author}
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err)
