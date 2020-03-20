@@ -126,3 +126,5 @@ Each campground has:
     * Magnifying glass instead of "Search" text on search button
     * Dynamic star ratings or thumbs up/down
     * Date submitted or date camped
+    * Personal photos instead of someone's imgur ones
+    * Map feature with exact lat and long of campsite
