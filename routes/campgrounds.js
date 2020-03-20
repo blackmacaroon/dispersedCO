@@ -8,18 +8,32 @@ const { isLoggedIn, checkUserCamp } = middleware
 
 // show all campgrounds
 router.get("/", function(req, res){
-    
-    Campground.find({}, function(err, allCampgrounds){
-        if(err){
-            console.log(err)
-        } else {
-            if(req.xhr){
-                res.json(allCampgrounds)
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Campground.find({name: regex}, function(err, allCampgrounds){
+            if(err){
+                console.log(err)
             } else {
+                if(allCampgrounds.length < 1){
+                    req.flash("error", "Nothing found, please try again")
+                    return res.redirect("/campgrounds")
+                }
                 res.render("campgrounds/index", {campgrounds: allCampgrounds, currentUser: req.user, page: 'campgrounds'})
             }
-        }
-    })
+        })
+    } else {
+        Campground.find({}, function(err, allCampgrounds){
+            if(err){
+                console.log(err)
+            } else {
+                if(req.xhr){
+                    res.json(allCampgrounds)
+                } else {
+                    res.render("campgrounds/index", {campgrounds: allCampgrounds, currentUser: req.user, page: 'campgrounds'})
+                }
+            }
+        })
+    }
 });
 
 // add new campground to database
@@ -94,5 +108,9 @@ router.delete("/:id", checkUserCamp, function(req, res){
         }
     })
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router
