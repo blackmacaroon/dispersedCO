@@ -20,12 +20,12 @@ module.exports = {
                         next();
                     } else {
                         req.flash("error", "You don't have permission to do that")
-                        console.log("bad!!!")
                         res.redirect("/campgrounds/" + req.params.id)
                     }
                 }
             })
         } else {
+            req.flash("error", "You must be logged in to do that")
             res.redirect("back")
         }
     },
