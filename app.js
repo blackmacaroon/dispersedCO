@@ -61,5 +61,5 @@ app.use("/campgrounds/:id/comments", commentRoutes)
 
 app.listen(port, err => {
     if (err) console.log(err);
-    console.log("server's running, hold on to your butts")
+    console.log("server is running, hold on to your butts")
 })
