@@ -12,7 +12,8 @@ const express       = require("express"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
     SeedDB          = require("./seeds"),
-    port            = 5555
+    port            = 5555.
+    password        = process.env.PASSWORD
 
 // config dotenv
 // require('dotenv').load()
@@ -23,7 +24,7 @@ const commentRoutes      = require("./routes/comments"),
       indexRoutes        = require("./routes/index")
 
 
-mongoose.connect("mongodb://localhost:27017/camp", { useNewUrlParser: true , useUnifiedTopology: true })
+mongoose.connect(`mongodb+srv://kaylacrow:${password}@cluster0-inqef.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true , useUnifiedTopology: true, useCreateIndex: true })
     .then(() => console.log(`Database connected`))
     .catch(err => console.log(`Database connection error: ${err.message}`))
 app.use(bodyParser.urlencoded({extended: true}))
