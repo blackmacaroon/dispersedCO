@@ -68,6 +68,7 @@ body {
 .comment-text span {
   font-weight: bold;
 }
+
 .comment-actions {
   display: flex;
   justify-content: flex-end;
